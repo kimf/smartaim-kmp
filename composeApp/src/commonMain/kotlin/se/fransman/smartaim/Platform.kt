@@ -1,0 +1,7 @@
+package se.fransman.smartaim
+
+interface Platform {
+    val name: String
+}
+
+expect fun getPlatform(): Platform
