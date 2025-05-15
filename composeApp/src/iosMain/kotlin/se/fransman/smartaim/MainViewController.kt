@@ -1,5 +1,9 @@
 package se.fransman.smartaim
 
 import androidx.compose.ui.window.ComposeUIViewController
+import appDatabase.DBFactory
 
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController() = ComposeUIViewController {
+    val db = DBFactory().createDatabase()
+    App(db)
+}
