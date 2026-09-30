@@ -5,9 +5,9 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import appDatabase.Scorecard
-import appDatabase.ScorecardDao
-import appDatabase.ScorecardWithCourse
+import Scorecard
+import ScorecardDao
+import ScorecardWithCourse
 
 class ScorecardListViewModel(
     private val scorecardsDao: ScorecardDao

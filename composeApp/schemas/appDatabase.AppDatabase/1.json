@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "497549e8941796dabf746f6d07a90376",
+    "identityHash": "8afb40ebb4489d665304dcc4d41bff64",
     "entities": [
       {
         "tableName": "courses",
@@ -207,6 +207,17 @@
             "id"
           ]
         },
+        "indices": [
+          {
+            "name": "index_hole_scores_scorecardId",
+            "unique": false,
+            "columnNames": [
+              "scorecardId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_hole_scores_scorecardId` ON `${TABLE_NAME}` (`scorecardId`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "scorecards",
@@ -224,7 +235,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '497549e8941796dabf746f6d07a90376')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8afb40ebb4489d665304dcc4d41bff64')"
     ]
   }
 }

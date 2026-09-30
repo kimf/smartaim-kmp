@@ -1,0 +1,1 @@
+fun initKoinIos() = initKoin(appDeclaration = {})

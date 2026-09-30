@@ -1,5 +1,3 @@
-package appDatabase
-
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Embedded
@@ -38,25 +36,23 @@ data class Scorecard(
         entity = Scorecard::class,
         parentColumns = ["id"],
         childColumns = ["scorecardId"],
-        onDelete = androidx.room.ForeignKey.CASCADE // Optional: Delete hole scores when scorecard is deleted
-    )]
+        onDelete = androidx.room.ForeignKey.CASCADE
+    )],
+    indices = [androidx.room.Index(value = ["scorecardId"])]
 )
 data class HoleScore(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0, // Add primary key for HoleScore
-    val scorecardId: Int, // Add this foreign key
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    val scorecardId: Int,
     val holeId: Int,
     val strokes: Int,
     val points: Int,
     val putts: Int,
-    val fir: Boolean, // Fairway In Regulation
-    val gir: Boolean, // Green In Regulation
+    val fir: Boolean,
+    val gir: Boolean,
     val givenStrokes: Int,
     val toPar: Int
 )
 
-
-
-// Represents a Course with its Holes
 data class CourseWithHoles(
     @Embedded val course: Course,
     @Relation(
@@ -66,7 +62,6 @@ data class CourseWithHoles(
     val holes: List<Hole>
 )
 
-// Represents a Scorecard with its associated Course
 data class ScorecardWithCourse(
     @Embedded val scorecard: Scorecard,
     @Relation(
@@ -76,7 +71,6 @@ data class ScorecardWithCourse(
     val course: Course
 )
 
-// Represents a Scorecard with its HoleScores
 data class ScorecardWithHoleScores(
     @Embedded val scorecard: Scorecard,
     @Relation(
@@ -87,7 +81,6 @@ data class ScorecardWithHoleScores(
     val holeScores: List<HoleScore>
 )
 
-// Represents a HoleScore with its associated Hole
 data class HoleScoreWithHole(
     @Embedded val holeScore: HoleScore,
     @Relation(
